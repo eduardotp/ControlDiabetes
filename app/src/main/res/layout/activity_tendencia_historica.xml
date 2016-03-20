@@ -9,4 +9,40 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.android.controldiabetes.TendenciaHistoricaActivity">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
 </RelativeLayout>
