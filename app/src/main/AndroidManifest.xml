@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistroAlimentosYControlActivity"></activity>
+        <activity android:name=".RegistroAlimentosYControlActivity" />
+        <activity android:name=".TendenciaHistoricaActivity"></activity>
     </application>
 
 </manifest>
