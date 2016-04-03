@@ -7,7 +7,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.android.controldiabetes.RegistroAlimentosYControlActivity">
+    tools:context="com.example.android.controldiabetes.RegistroAlimentosYControlActivity"
+    android:background="@drawable/alimentarse_sano"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +29,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#535355"
             android:orientation="vertical">
 
             <TextView
