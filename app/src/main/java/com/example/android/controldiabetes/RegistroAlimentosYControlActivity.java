@@ -2,24 +2,29 @@ package com.example.android.controldiabetes;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.example.android.controldiabetes.bean.AlimentosObjetos;
 import com.example.android.controldiabetes.services.ExcelServices;
+import com.example.android.controldiabetes.services.FileServices;
 import com.example.android.controldiabetes.services.FoodHeaderServices;
 import com.example.android.controldiabetes.services.FoodServices;
 
-import java.io.File;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.util.ArrayList;
 
-public class RegistroAlimentosYControlActivity extends Activity implements View.OnClickListener{
+
+public class RegistroAlimentosYControlActivity extends Activity  {
 
     ExcelServices excelServices=new ExcelServices();
     FoodHeaderServices foodHeaderServices=new FoodHeaderServices();
     FoodServices foodServices=new FoodServices();
-
+    FileServices fileServices=new FileServices();
     Button btn1,btn2,btn3;
 
     Spinner sp01,sp02;
@@ -48,66 +53,103 @@ public class RegistroAlimentosYControlActivity extends Activity implements View.
 
         btnsend=(Button) findViewById(R.id.btnRegistrardatos);
 
-        // leer exel de alimentos
-
-        //excelServices.readExcelSetHeadersListFoodServices();
-
-    }
+        String ambiente= Environment.getExternalStorageDirectory().getAbsolutePath();
+        String patron="AlimentosABC";
+        //buscar ruta
+        String path=fileServices.searchFile(ambiente,patron);
+        // si hay ruta del exel
+       if(path!=null){
+            // leer exel de alimentos
+            excelServices.readExcelSetHeadersListFoodServices(path);
+            excelServices.readExcelSetListFoodServices(path);
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"Parece que no se encontro el archivo de datos de alimentos.",Toast.LENGTH_LONG).show();
+       }
+     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
+        //settear valores a los combos
+        setAlimentosDataintoSpinner(sp01);
+        setAlimentosDataintoSpinner(sp03);
+        setAlimentosDataintoSpinner(sp05);
+
+        sp01.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String value = sp01.getSelectedItem().toString();
+
+                setAlimentosDataintoSpinnerById(value, sp02);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        sp03.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String value = sp03.getSelectedItem().toString();
+
+                setAlimentosDataintoSpinnerById(value, sp04);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        sp05.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String value = sp05.getSelectedItem().toString();
+
+                setAlimentosDataintoSpinnerById(value, sp06);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+     }
 
 
-    }
+    public void setAlimentosDataintoSpinner(Spinner spinner){
 
+        ArrayList<AlimentosObjetos> arrayList= (ArrayList) foodHeaderServices.getFoodList();
+        ArrayList<String> arrayListas=new ArrayList<String>();
 
-    @Override
-    public void onClick(View v) {
-
-            int viewID = v.getId();
-
-
-        switch (viewID){
-
-            //combo enventos
-            case R.id.cbo01 :
-
-                break;
-            case R.id.cbo02 :
-
-                break;
-            case R.id.cbo03 :
-
-                break;
-            case R.id.btnAgregarPimeracomida :
-
-                break;
-            case R.id.btnAgregarSegundacomida :
-
-                break;
-            case R.id.btnAgregarTerceracomida :
-
-                break;
-            //combo enventos--
-            //boton de grabados eventos
-            case R.id.cbo04 :
-
-                break;
-            case R.id.cbo05 :
-
-                break;
-            case R.id.cbo06 :
-
-                break;
-            //boton de grabados eventos --
-            //boton de envio de datos
-            case R.id.btnRegistrardatos :
-
-                break;
-            //boton de envio de datos --
+        for(int  i=0;i<arrayList.size();i++){
+            arrayListas.add(String.valueOf(arrayList.get(i).getIdentidad()));
         }
 
+        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(getApplication(),android.R.layout.simple_spinner_item,arrayListas);
+        spinner.setAdapter(arrayAdapter);
+
     }
+
+    public void setAlimentosDataintoSpinnerById(String parentspinner,Spinner childresult){
+
+        ArrayList<String> arrayListas=new ArrayList<String>();
+
+        ArrayList<AlimentosObjetos> arrayList=(ArrayList) foodServices.getFoodList();
+
+        for(int  i=0;i<arrayList.size();i++){
+
+             if(arrayList.get(i).getIdentidad().trim().equals(parentspinner.trim()) ){
+                arrayListas.add(arrayList.get(i).getAlimentos());
+              }
+        }
+        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(getApplication(),android.R.layout.simple_spinner_item,arrayListas);
+        childresult.setAdapter(arrayAdapter);
+    }
+
+
+
 }

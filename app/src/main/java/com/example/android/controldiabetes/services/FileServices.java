@@ -9,7 +9,7 @@ public class FileServices {
 
     public String searchFile(String path,String filename){
 
-        String filepath="there is no file path";
+        String filepath=null;
 
         File file=new File(path);
         File[] listfiles=file.listFiles();

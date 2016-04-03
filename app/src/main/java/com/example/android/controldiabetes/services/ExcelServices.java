@@ -53,18 +53,13 @@ public void readExcelSetListFoodServices(String path){
 			Workbook workbook = Workbook.getWorkbook(new File(path));
 			Sheet sheet = workbook.getSheet(0);
 
-			// 1. obtener toda la data
-			// 2. al seleccionar la data del cbo1 actualizar el cb02
-		/*	Cell a1 = sheet.getCell(0,0); 
-			String stringa1 = a1.getContents(); 
 
-			System.out.println(""+stringa1); */
 			Cell b2 ;
 			Cell b3 ;
 
 			for(int i=0;i<sheet.getColumns();i++){
 				 
-				for(int j=0;j<sheet.getRows();j++){
+				for(int j=1;j<sheet.getRows();j++){
 					 
 					b2= sheet.getCell(i,j); 
 					b3= sheet.getCell(i,0);  
