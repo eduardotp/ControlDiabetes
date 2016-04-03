@@ -129,7 +129,7 @@ public class RegistroAlimentosYControlActivity extends Activity  {
             arrayListas.add(String.valueOf(arrayList.get(i).getIdentidad()));
         }
 
-        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(getApplication(),android.R.layout.simple_spinner_item,arrayListas);
+        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(getApplication(),R.layout.spinner_font,arrayListas);
         spinner.setAdapter(arrayAdapter);
 
     }
@@ -146,7 +146,7 @@ public class RegistroAlimentosYControlActivity extends Activity  {
                 arrayListas.add(arrayList.get(i).getAlimentos());
               }
         }
-        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(getApplication(),android.R.layout.simple_spinner_item,arrayListas);
+        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(getApplication(),R.layout.spinner_font,arrayListas);
         childresult.setAdapter(arrayAdapter);
     }
 

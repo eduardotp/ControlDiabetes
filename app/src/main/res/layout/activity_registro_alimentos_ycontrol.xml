@@ -44,28 +44,28 @@
                 android:layout_height="wrap_content"
                 android:text="PRIMERA COMIDA :"
                 android:gravity="left"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif"
                 android:textSize="30px"
                 />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#6d81d1"
                 android:orientation="horizontal"
                 android:id="@+id/Laymenu01">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#5f6a32"
                     android:orientation="vertical"
+                    android:layout_gravity="center"
 
                     >
                     <Spinner
                         android:layout_width="240px"
                         android:layout_height="wrap_content"
                         android:id="@+id/cbo01"
+                        android:textColor="@android:color/black"
                          >
                     </Spinner>
                 </LinearLayout>
@@ -73,22 +73,24 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#5a6f6f"
                     android:orientation="vertical"
+                    android:layout_gravity="center"
+
                     >
                     <Spinner
                         android:layout_width="240px"
                         android:layout_height="wrap_content"
                         android:id="@+id/cbo02"
-                        ></Spinner>
+                        android:textColor="@android:color/black"
+                         ></Spinner>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#d4352f"
                     android:orientation="vertical"
+                    android:layout_gravity="center"
                     >
 
                     <Button
@@ -107,27 +109,27 @@
                 android:layout_height="wrap_content"
                 android:text="SEGUNDA COMIDA :"
                 android:gravity="left"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif"
                 android:textSize="30px"
                 />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#6d81d1"
                 android:orientation="horizontal"
                 android:id="@+id/Laymenu02">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#5f6a32"
                     android:orientation="vertical"
+                    android:layout_gravity="center"
 
                     >
                     <Spinner
                         android:layout_width="240px"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
                         android:id="@+id/cbo03">
                     </Spinner>
                 </LinearLayout>
@@ -135,13 +137,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#5a6f6f"
                     android:orientation="vertical"
+                    android:layout_gravity="center"
+
                     >
                     <Spinner
                         android:layout_width="240px"
                         android:layout_height="wrap_content"
                         android:id="@+id/cbo04"
+                        android:textColor="@android:color/black"
                         ></Spinner>
 
                 </LinearLayout>
@@ -149,8 +153,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#d4352f"
                     android:orientation="vertical"
+                    android:layout_gravity="center"
                     >
 
                     <Button
@@ -169,27 +173,28 @@
                 android:layout_height="wrap_content"
                 android:text="TERCERA COMIDA :"
                 android:gravity="left"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif"
                 android:textSize="30px"
                 />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#6d81d1"
                 android:orientation="horizontal"
                 android:id="@+id/Laymenu03">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#5f6a32"
                     android:orientation="vertical"
+                    android:layout_gravity="center"
 
                     >
                     <Spinner
                         android:layout_width="240px"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+
                         android:id="@+id/cbo05">
                     </Spinner>
                 </LinearLayout>
@@ -197,13 +202,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#5a6f6f"
                     android:orientation="vertical"
+                    android:layout_gravity="center"
                     >
                     <Spinner
                         android:layout_width="240px"
                         android:layout_height="wrap_content"
-                        android:id="@+id/cbo06"
+                         android:id="@+id/cbo06"
+                        android:textColor="@android:color/black"
+
                         ></Spinner>
 
                 </LinearLayout>
@@ -211,14 +218,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#d4352f"
                     android:orientation="vertical"
+                    android:layout_gravity="center"
                     >
 
                     <Button
                         android:layout_width="220px"
                         android:layout_height="wrap_content"
                         android:text="AGREGAR"
+                        android:layout_gravity="center"
                         android:id="@+id/btnAgregarTerceracomida"
                         />
 
@@ -239,7 +247,7 @@
                     android:layout_height="wrap_content"
                     android:text=" REGISTRO DIARIO DE MEDICAMENTOS"
                     android:gravity="left"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif"
                     android:textSize="30px"
                     />
 
