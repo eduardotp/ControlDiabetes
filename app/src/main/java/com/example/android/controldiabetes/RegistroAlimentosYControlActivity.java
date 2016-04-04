@@ -3,14 +3,18 @@ package com.example.android.controldiabetes;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.android.controldiabetes.adapters.AlimentosMedicacionAdapter;
 import com.example.android.controldiabetes.bean.AlimentosObjetos;
+import com.example.android.controldiabetes.bean.Medicamentos;
 import com.example.android.controldiabetes.services.ExcelServices;
 import com.example.android.controldiabetes.services.FileServices;
 import com.example.android.controldiabetes.services.FoodHeaderServices;
@@ -19,17 +23,20 @@ import com.example.android.controldiabetes.services.FoodServices;
 import java.util.ArrayList;
 
 
-public class RegistroAlimentosYControlActivity extends Activity  {
+public class RegistroAlimentosYControlActivity extends AppCompatActivity {
 
     ExcelServices excelServices=new ExcelServices();
     FoodHeaderServices foodHeaderServices=new FoodHeaderServices();
     FoodServices foodServices=new FoodServices();
     FileServices fileServices=new FileServices();
+
     Button btn1,btn2,btn3;
 
     Spinner sp01,sp02;
     Spinner sp03,sp04;
     Spinner sp05,sp06;
+
+    ListView listView;
 
     Button btnsend;
 
@@ -51,7 +58,9 @@ public class RegistroAlimentosYControlActivity extends Activity  {
         btn2=(Button) findViewById(R.id.btnAgregarSegundacomida);
         btn3=(Button) findViewById(R.id.btnAgregarTerceracomida);
 
-        btnsend=(Button) findViewById(R.id.btnRegistrardatos);
+        listView=(ListView) findViewById(R.id.listamedicamentos);
+
+         btnsend=(Button) findViewById(R.id.btnRegistrardatos);
 
         String ambiente= Environment.getExternalStorageDirectory().getAbsolutePath();
         String patron="AlimentosABC";
@@ -66,6 +75,7 @@ public class RegistroAlimentosYControlActivity extends Activity  {
         else{
             Toast.makeText(getApplicationContext(),"Parece que no se encontro el archivo de datos de alimentos.",Toast.LENGTH_LONG).show();
        }
+
      }
 
     @Override
@@ -117,6 +127,22 @@ public class RegistroAlimentosYControlActivity extends Activity  {
 
             }
         });
+
+
+        ArrayList<Medicamentos> medicamentoses=new ArrayList<Medicamentos>();
+        medicamentoses.add(new Medicamentos("Diazepan","Diazepan"));
+        medicamentoses.add(new Medicamentos("Clonazepan","Clonazepan"));
+        medicamentoses.add(new Medicamentos("Rigoxixilina","Rigoxixilina"));
+        medicamentoses.add(new Medicamentos("Aixilina","Aixilina"));
+        medicamentoses.add(new Medicamentos("Gliburida ","Gliburida "));
+        medicamentoses.add(new Medicamentos("Metformina", "Metformina"));
+        medicamentoses.add(new Medicamentos("Tiazolidinedionas", "Tiazolidinedionas"));
+
+        AlimentosMedicacionAdapter alimentosMedicacionAdapter=new AlimentosMedicacionAdapter(getApplicationContext(),medicamentoses);
+
+        listView.setAdapter(alimentosMedicacionAdapter);
+
+
      }
 
 
