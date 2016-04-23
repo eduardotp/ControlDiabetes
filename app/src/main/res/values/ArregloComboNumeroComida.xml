@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="listanumcomida">
+
+        <item>Primera comida </item>
+        <item>Segunda comida </item>
+        <item>Tercera comida </item>
+        <item>Otros comida </item>
+
+    </array>
+
+
+</resources>

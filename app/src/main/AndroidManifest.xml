@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.controldiabetes">
+    package="com.example.android.controldiabetes" >
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -14,8 +14,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".RegistroAlimentosYControlActivity">
+        android:theme="@style/AppTheme" >
+        <activity android:name=".RegistroAlimentosYControlActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,15 +23,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".TendenciaHistoricaActivity" />
-        <activity android:name=".RegistroDiarioActivity"></activity>
-        <activity android:name=".Splash">
+        <activity android:name=".Splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".registropac" >
+        </activity>
     </application>
 
 </manifest>

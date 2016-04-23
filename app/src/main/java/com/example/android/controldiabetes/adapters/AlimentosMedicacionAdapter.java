@@ -10,6 +10,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.android.controldiabetes.R;
+import com.example.android.controldiabetes.bean.AlimentosObjetos;
 import com.example.android.controldiabetes.bean.Medicamentos;
 
 import java.util.List;
@@ -21,21 +22,21 @@ import java.util.zip.Inflater;
 public class AlimentosMedicacionAdapter extends BaseAdapter {
 
     Context context;
-    List<Medicamentos> medicamentos;
+    List<AlimentosObjetos> AlimentosMedicacionAdapter;
 
-    public AlimentosMedicacionAdapter(Context context, List<Medicamentos> medicamentos) {
+    public AlimentosMedicacionAdapter(Context context, List<AlimentosObjetos> AlimentosMedicacionAdapter) {
         this.context = context;
-        this.medicamentos = medicamentos;
+        this.AlimentosMedicacionAdapter = AlimentosMedicacionAdapter;
     }
 
     @Override
     public int getCount() {
-        return medicamentos.size();
+        return AlimentosMedicacionAdapter.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return medicamentos.get(position);
+        return AlimentosMedicacionAdapter.get(position);
     }
 
     @Override
@@ -54,8 +55,10 @@ public class AlimentosMedicacionAdapter extends BaseAdapter {
 
             holderListaAlimentos=new HolderListaAlimentos();
 
-            holderListaAlimentos.textView=(TextView) convertView.findViewById(R.id.txtMD01);
-            holderListaAlimentos.radioButton=(CheckBox) convertView.findViewById(R.id.rbtMD01);
+            holderListaAlimentos.numcomida=(TextView) convertView.findViewById(R.id.txtnumerocomida);
+            holderListaAlimentos.tipocomida=(TextView) convertView.findViewById(R.id.txttipocomida);
+            holderListaAlimentos.alimentotipo=(TextView) convertView.findViewById(R.id.txtcomidatipo);
+            holderListaAlimentos.selectedfood=(CheckBox) convertView.findViewById(R.id.chkMantener);
 
             convertView.setTag(holderListaAlimentos);
 
@@ -63,17 +66,23 @@ public class AlimentosMedicacionAdapter extends BaseAdapter {
         else{
             holderListaAlimentos=(HolderListaAlimentos)  convertView.getTag();
         }
-        if(medicamentos!=null){
-            holderListaAlimentos.textView.setText(medicamentos.get(position).getNombre());
-       //     holderListaAlimentos.radioButton.setChecked(false);
+        if(AlimentosMedicacionAdapter!=null){
+            holderListaAlimentos.numcomida.setText(AlimentosMedicacionAdapter.get(position).getTipoComida());
+            holderListaAlimentos.tipocomida.setText(AlimentosMedicacionAdapter.get(position).getIdentidad());
+            holderListaAlimentos.alimentotipo.setText(AlimentosMedicacionAdapter.get(position).getAlimentos());
+            holderListaAlimentos.selectedfood.setChecked(AlimentosMedicacionAdapter.get(position).isSelected());
         }
 
         return convertView;
     }
 
     static class HolderListaAlimentos{
-         TextView textView;
-        CheckBox radioButton;
+
+        TextView numcomida;
+        TextView tipocomida;
+         TextView alimentotipo;
+         CheckBox selectedfood;
+
      }
 
 }

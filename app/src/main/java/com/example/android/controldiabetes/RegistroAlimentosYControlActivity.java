@@ -1,13 +1,16 @@
 package com.example.android.controldiabetes;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -23,21 +26,19 @@ import com.example.android.controldiabetes.services.FoodServices;
 import java.util.ArrayList;
 
 
-public class RegistroAlimentosYControlActivity extends AppCompatActivity {
+public class RegistroAlimentosYControlActivity extends Activity {
 
-    ExcelServices excelServices=new ExcelServices();
-    FoodHeaderServices foodHeaderServices=new FoodHeaderServices();
-    FoodServices foodServices=new FoodServices();
-    FileServices fileServices=new FileServices();
+    ExcelServices excelServices = new ExcelServices();
+    FoodHeaderServices foodHeaderServices = new FoodHeaderServices();
+    FoodServices foodServices = new FoodServices();
+    FileServices fileServices = new FileServices();
 
-    Button btn1,btn2,btn3;
+    boolean btnaddpressed = false;
 
-    Spinner sp01,sp02;
-    Spinner sp03,sp04;
-    Spinner sp05,sp06;
+    ImageButton btn1;
+    Spinner sp01, sp02;
 
     ListView listView;
-
     Button btnsend;
 
     @Override
@@ -45,38 +46,29 @@ public class RegistroAlimentosYControlActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_alimentos_ycontrol);
 
-        sp01=(Spinner) findViewById(R.id.cbo01);
-        sp02=(Spinner) findViewById(R.id.cbo02);
+        sp01 = (Spinner) findViewById(R.id.cbo01);
+        sp02 = (Spinner) findViewById(R.id.cbo02);
 
-        sp03=(Spinner) findViewById(R.id.cbo03);
-        sp04=(Spinner) findViewById(R.id.cbo04);
+        btn1 = (ImageButton) findViewById(R.id.btnAgregarPimeracomida);
 
-        sp05=(Spinner) findViewById(R.id.cbo05);
-        sp06=(Spinner) findViewById(R.id.cbo06);
+        listView = (ListView) findViewById(R.id.listamedicamentos);
 
-        btn1=(Button) findViewById(R.id.btnAgregarPimeracomida);
-        btn2=(Button) findViewById(R.id.btnAgregarSegundacomida);
-        btn3=(Button) findViewById(R.id.btnAgregarTerceracomida);
+        btnsend = (Button) findViewById(R.id.btnRegistrardatos);
 
-        listView=(ListView) findViewById(R.id.listamedicamentos);
-
-         btnsend=(Button) findViewById(R.id.btnRegistrardatos);
-
-        String ambiente= Environment.getExternalStorageDirectory().getAbsolutePath();
-        String patron="AlimentosABC";
+        String ambiente = Environment.getExternalStorageDirectory().getAbsolutePath();
+        String patron = "AlimentosABC";
         //buscar ruta
-        String path=fileServices.searchFile(ambiente,patron);
+        String path = fileServices.searchFile(ambiente, patron);
         // si hay ruta del exel
-       if(path!=null){
+        if (path != null) {
             // leer exel de alimentos
             excelServices.readExcelSetHeadersListFoodServices(path);
             excelServices.readExcelSetListFoodServices(path);
+        } else {
+            Toast.makeText(getApplicationContext(), "Parece que no se encontro el archivo de datos de alimentos.", Toast.LENGTH_LONG).show();
         }
-        else{
-            Toast.makeText(getApplicationContext(),"Parece que no se encontro el archivo de datos de alimentos.",Toast.LENGTH_LONG).show();
-       }
 
-     }
+    }
 
     @Override
     protected void onResume() {
@@ -84,8 +76,6 @@ public class RegistroAlimentosYControlActivity extends AppCompatActivity {
 
         //settear valores a los combos
         setAlimentosDataintoSpinner(sp01);
-        setAlimentosDataintoSpinner(sp03);
-        setAlimentosDataintoSpinner(sp05);
 
         sp01.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -101,81 +91,79 @@ public class RegistroAlimentosYControlActivity extends AppCompatActivity {
 
             }
         });
-        sp03.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String value = sp03.getSelectedItem().toString();
+            public void onClick(View v) {
 
-                setAlimentosDataintoSpinnerById(value, sp04);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        sp05.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String value = sp05.getSelectedItem().toString();
-
-                setAlimentosDataintoSpinnerById(value, sp06);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
 
+        btn1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
 
-        ArrayList<Medicamentos> medicamentoses=new ArrayList<Medicamentos>();
-        medicamentoses.add(new Medicamentos("Diazepan","Diazepan"));
-        medicamentoses.add(new Medicamentos("Clonazepan","Clonazepan"));
-        medicamentoses.add(new Medicamentos("Rigoxixilina","Rigoxixilina"));
-        medicamentoses.add(new Medicamentos("Aixilina","Aixilina"));
-        medicamentoses.add(new Medicamentos("Gliburida ","Gliburida "));
-        medicamentoses.add(new Medicamentos("Metformina", "Metformina"));
-        medicamentoses.add(new Medicamentos("Tiazolidinedionas", "Tiazolidinedionas"));
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                btn1.setImageResource(R.drawable.ic_add_circle_white_36dp);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btn1.setImageResource(R.drawable.ic_add_circle_black_36dp);
+                }
+                return false;
+            }
+        });
 
-        AlimentosMedicacionAdapter alimentosMedicacionAdapter=new AlimentosMedicacionAdapter(getApplicationContext(),medicamentoses);
+
+        ArrayList<AlimentosObjetos> Alimentoslist = new ArrayList<AlimentosObjetos>();
+
+        AlimentosMedicacionAdapter alimentosMedicacionAdapter
+                = new AlimentosMedicacionAdapter(getApplicationContext(), Alimentoslist);
 
         listView.setAdapter(alimentosMedicacionAdapter);
 
+        btnsend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-     }
+                Intent intent = new Intent(RegistroAlimentosYControlActivity.this, registropac.class);
+
+                startActivity(intent);
+
+            }
+        });
+
+    }
 
 
-    public void setAlimentosDataintoSpinner(Spinner spinner){
+    public void setAlimentosDataintoSpinner(Spinner spinner) {
 
-        ArrayList<AlimentosObjetos> arrayList= (ArrayList) foodHeaderServices.getFoodList();
-        ArrayList<String> arrayListas=new ArrayList<String>();
+        ArrayList<AlimentosObjetos> arrayList = (ArrayList) foodHeaderServices.getFoodList();
+        ArrayList<String> arrayListas = new ArrayList<String>();
 
-        for(int  i=0;i<arrayList.size();i++){
+        for (int i = 0; i < arrayList.size(); i++) {
             arrayListas.add(String.valueOf(arrayList.get(i).getIdentidad()));
         }
 
-        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(getApplication(),R.layout.spinner_font,arrayListas);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplication(), R.layout.spinner_font, arrayListas);
         spinner.setAdapter(arrayAdapter);
 
     }
 
-    public void setAlimentosDataintoSpinnerById(String parentspinner,Spinner childresult){
+    public void setAlimentosDataintoSpinnerById(String parentspinner, Spinner childresult) {
 
-        ArrayList<String> arrayListas=new ArrayList<String>();
+        ArrayList<String> arrayListas = new ArrayList<String>();
 
-        ArrayList<AlimentosObjetos> arrayList=(ArrayList) foodServices.getFoodList();
+        ArrayList<AlimentosObjetos> arrayList = (ArrayList) foodServices.getFoodList();
 
-        for(int  i=0;i<arrayList.size();i++){
+        for (int i = 0; i < arrayList.size(); i++) {
 
-             if(arrayList.get(i).getIdentidad().trim().equals(parentspinner.trim()) ){
+            if (arrayList.get(i).getIdentidad().trim().equals(parentspinner.trim())) {
                 arrayListas.add(arrayList.get(i).getAlimentos());
-              }
+            }
         }
-        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(getApplication(),R.layout.spinner_font,arrayListas);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplication(), R.layout.spinner_font, arrayListas);
         childresult.setAdapter(arrayAdapter);
     }
-
 
 
 }
