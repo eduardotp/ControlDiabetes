@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -33,13 +34,15 @@ public class RegistroAlimentosYControlActivity extends Activity {
     FoodServices foodServices = new FoodServices();
     FileServices fileServices = new FileServices();
 
-    boolean btnaddpressed = false;
-
     ImageButton btn1;
-    Spinner sp01, sp02;
+    Spinner sp01, sp02,spnc;
 
     ListView listView;
-    Button btnsend;
+    ImageButton btnsend;
+
+    BaseAdapter baseAdapter;
+
+    ArrayList<AlimentosObjetos> alimentosObjetoses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +51,12 @@ public class RegistroAlimentosYControlActivity extends Activity {
 
         sp01 = (Spinner) findViewById(R.id.cbo01);
         sp02 = (Spinner) findViewById(R.id.cbo02);
-
+        spnc = (Spinner) findViewById(R.id.cbonumcomida);
         btn1 = (ImageButton) findViewById(R.id.btnAgregarPimeracomida);
 
-        listView = (ListView) findViewById(R.id.listamedicamentos);
+        listView = (ListView) findViewById(R.id.listaalimentos);
 
-        btnsend = (Button) findViewById(R.id.btnRegistrardatos);
+        btnsend = (ImageButton) findViewById(R.id.btnRegistrardatos);
 
         String ambiente = Environment.getExternalStorageDirectory().getAbsolutePath();
         String patron = "AlimentosABC";
@@ -68,6 +71,11 @@ public class RegistroAlimentosYControlActivity extends Activity {
             Toast.makeText(getApplicationContext(), "Parece que no se encontro el archivo de datos de alimentos.", Toast.LENGTH_LONG).show();
         }
 
+        alimentosObjetoses=new ArrayList<AlimentosObjetos>();
+
+        baseAdapter=new AlimentosMedicacionAdapter(getApplicationContext(),alimentosObjetoses);
+
+        listView.setAdapter(baseAdapter);
     }
 
     @Override
@@ -96,6 +104,15 @@ public class RegistroAlimentosYControlActivity extends Activity {
             @Override
             public void onClick(View v) {
 
+                AlimentosObjetos alimentosObjetos=new AlimentosObjetos(String.valueOf(spnc.getSelectedItemPosition()),sp01.getSelectedItem().toString(),sp02.getSelectedItem().toString(),true);
+
+                alimentosObjetoses.add(alimentosObjetos);
+                System.err.println(alimentosObjetos.getTipoComida() + " " + alimentosObjetos.getIdentidad());
+
+                 baseAdapter.notifyDataSetChanged();
+                // listView.invalidateViews();
+                listView.setAdapter(baseAdapter);
+
 
             }
         });
@@ -114,6 +131,8 @@ public class RegistroAlimentosYControlActivity extends Activity {
         });
 
 
+
+
         ArrayList<AlimentosObjetos> Alimentoslist = new ArrayList<AlimentosObjetos>();
 
         AlimentosMedicacionAdapter alimentosMedicacionAdapter
@@ -125,12 +144,27 @@ public class RegistroAlimentosYControlActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(RegistroAlimentosYControlActivity.this, registropac.class);
+                //   Intent intent = new Intent(RegistroAlimentosYControlActivity.this, registropac.class);
 
-                startActivity(intent);
+                //   startActivity(intent);
 
             }
         });
+
+        btnsend.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    btnsend.setImageResource(R.drawable.ic_save_white_36dp);
+                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btnsend.setImageResource(R.drawable.ic_save_black_36dp);
+                 }
+                return false;
+            }
+        });
+
+
 
     }
 
@@ -164,6 +198,7 @@ public class RegistroAlimentosYControlActivity extends Activity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplication(), R.layout.spinner_font, arrayListas);
         childresult.setAdapter(arrayAdapter);
     }
+
 
 
 }

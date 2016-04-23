@@ -195,11 +195,11 @@
     <LinearLayout
         android:id="@+id/lnv02.0"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="220dp"
         android:orientation="vertical">
 
         <ListView
-            android:id="@+id/listamedicamentos"
+            android:id="@+id/listaalimentos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></ListView>
 
@@ -233,6 +233,7 @@
             android:id="@+id/ln03.2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical">
 
             <LinearLayout
@@ -249,6 +250,7 @@
                     android:orientation="vertical">
 
                     <CheckBox
+                        android:id="@+id/chk01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/BLACK"
@@ -277,19 +279,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnRegistrardatos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="GRABAR" />
+                android:background="@drawable/stylebtnroundedbold"
+                android:src="@drawable/ic_save_black_36dp"
+                />
 
         </LinearLayout>
 
     </LinearLayout>
 
-
     </LinearLayout>
-
 
 </RelativeLayout>

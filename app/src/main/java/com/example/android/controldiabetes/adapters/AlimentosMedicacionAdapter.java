@@ -55,8 +55,8 @@ public class AlimentosMedicacionAdapter extends BaseAdapter {
 
             holderListaAlimentos=new HolderListaAlimentos();
 
-            holderListaAlimentos.numcomida=(TextView) convertView.findViewById(R.id.txtnumerocomida);
-            holderListaAlimentos.tipocomida=(TextView) convertView.findViewById(R.id.txttipocomida);
+         //   holderListaAlimentos.numcomida=(TextView) convertView.findViewById(R.id.txtnumerocomida);
+         //   holderListaAlimentos.tipocomida=(TextView) convertView.findViewById(R.id.txttipocomida);
             holderListaAlimentos.alimentotipo=(TextView) convertView.findViewById(R.id.txtcomidatipo);
             holderListaAlimentos.selectedfood=(CheckBox) convertView.findViewById(R.id.chkMantener);
 
@@ -67,8 +67,8 @@ public class AlimentosMedicacionAdapter extends BaseAdapter {
             holderListaAlimentos=(HolderListaAlimentos)  convertView.getTag();
         }
         if(AlimentosMedicacionAdapter!=null){
-            holderListaAlimentos.numcomida.setText(AlimentosMedicacionAdapter.get(position).getTipoComida());
-            holderListaAlimentos.tipocomida.setText(AlimentosMedicacionAdapter.get(position).getIdentidad());
+         //   holderListaAlimentos.numcomida.setText(AlimentosMedicacionAdapter.get(position).getTipoComida());
+         //   holderListaAlimentos.tipocomida.setText(AlimentosMedicacionAdapter.get(position).getIdentidad());
             holderListaAlimentos.alimentotipo.setText(AlimentosMedicacionAdapter.get(position).getAlimentos());
             holderListaAlimentos.selectedfood.setChecked(AlimentosMedicacionAdapter.get(position).isSelected());
         }
@@ -78,8 +78,8 @@ public class AlimentosMedicacionAdapter extends BaseAdapter {
 
     static class HolderListaAlimentos{
 
-        TextView numcomida;
-        TextView tipocomida;
+      //  TextView numcomida;
+      //  TextView tipocomida;
          TextView alimentotipo;
          CheckBox selectedfood;
 

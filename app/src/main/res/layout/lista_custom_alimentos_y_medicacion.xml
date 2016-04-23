@@ -3,17 +3,20 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+            <!--
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1"
+                android:layout_gravity="center"
+
                 >
                 <TextView
-                    android:layout_width="400px"
+                    android:layout_width="20px"
                     android:layout_height="wrap_content"
                     android:id="@+id/txtnumerocomida"
-                    android:textColor="@color/BLACK"
+                    android:textColor="#000000"
                     android:fontFamily="comic-sans"
 
                     />
@@ -25,28 +28,34 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1"
+                android:layout_gravity="center"
+
                 >
                             <TextView
-                                android:layout_width="400px"
+                                android:layout_width="250px"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/txttipocomida"
-                                android:textColor="@color/BLACK"
+                                android:textColor="#000000"
                                 android:fontFamily="comic-sans"
 
                                 />
 
             </LinearLayout>
+            -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1"
+                android:layout_gravity="left|center"
+                android:gravity="left|center"
+
                 >
                 <TextView
-                    android:layout_width="400px"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/txtcomidatipo"
-                    android:textColor="@color/BLACK"
+                    android:textColor="#000000"
                     android:fontFamily="comic-sans"
 
                     />
@@ -57,16 +66,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1"
+                android:layout_gravity="right|center"
+                android:gravity="right|center"
                 >
 
                 <CheckBox
-                    android:buttonTint="@color/BLACK"
-                    android:layout_width="wrap_content"
+                    android:buttonTint="#000000"
+                    android:layout_width="90px"
                     android:layout_height="wrap_content"
-                    android:text="Mantener ?"
+                    android:text="Si"
                     android:id="@+id/chkMantener"
-                    android:textColor="@color/BLACK"
-                    android:checked="false" />
+                    android:textColor="#000000"
+                    android:checked="false"
+
+                    />
             </LinearLayout>
 
 </LinearLayout>
