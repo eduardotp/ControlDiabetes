@@ -71,6 +71,8 @@ public class AlimentosMedicacionAdapter extends BaseAdapter {
          //   holderListaAlimentos.tipocomida.setText(AlimentosMedicacionAdapter.get(position).getIdentidad());
             holderListaAlimentos.alimentotipo.setText(AlimentosMedicacionAdapter.get(position).getAlimentos());
             holderListaAlimentos.selectedfood.setChecked(AlimentosMedicacionAdapter.get(position).isSelected());
+
+
         }
 
         return convertView;

@@ -1,5 +1,7 @@
 package com.example.android.controldiabetes.services;
 
+import android.util.Log;
+
 import java.io.File;
 
 /**
@@ -15,11 +17,13 @@ public class FileServices {
         File[] listfiles=file.listFiles();
         for(int i=0;i<listfiles.length;i++){
             if(listfiles[i].getName().startsWith(filename)){
+                Log.d("filename",filename+" "+listfiles[i]);
                 filepath=listfiles[i].getAbsolutePath();
                 break;
             }
         }
          return filepath;
+
     }
 
 }

@@ -16,11 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity android:name=".RegistroAlimentosYControlActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.default" />
-            </intent-filter>
+            
         </activity>
         <activity android:name=".TendenciaHistoricaActivity" />
         <activity android:name=".Splash" >
@@ -32,6 +28,25 @@
         </activity>
         <activity android:name=".registropac" >
         </activity>
+
+        <activity android:name=".MainActivity" >
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+
+                    <category android:name="android.intent.category.default" />
+                </intent-filter>
+            </activity>
+
+        <activity android:name=".RegistroAyunas" >
+        </activity>
+        <activity android:name=".RegistroDiario" >
+        </activity>
+        <activity android:name=".DatosPersonales" >
+        </activity>
+        <activity android:name=".Comidas" >
+        </activity>
+
     </application>
 
+    
 </manifest>

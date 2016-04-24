@@ -59,17 +59,21 @@ public class RegistroAlimentosYControlActivity extends Activity {
         btnsend = (ImageButton) findViewById(R.id.btnRegistrardatos);
 
         String ambiente = Environment.getExternalStorageDirectory().getAbsolutePath();
-        String patron = "AlimentosABC";
-        //buscar ruta
-        String path = fileServices.searchFile(ambiente, patron);
-        // si hay ruta del exel
-        if (path != null) {
-            // leer exel de alimentos
-            excelServices.readExcelSetHeadersListFoodServices(path);
-            excelServices.readExcelSetListFoodServices(path);
-        } else {
-            Toast.makeText(getApplicationContext(), "Parece que no se encontro el archivo de datos de alimentos.", Toast.LENGTH_LONG).show();
-        }
+        String patron = "Alimentos ABC";
+       // Toast.makeText(getApplicationContext(), ambiente, Toast.LENGTH_LONG).show();
+
+
+            //buscar ruta
+            String path = fileServices.searchFile(ambiente, patron);
+            // si hay ruta del exel
+            if (path != null) {
+                // leer exel de alimentos
+                excelServices.readExcelSetHeadersListFoodServices(path);
+                excelServices.readExcelSetListFoodServices(path);
+            } else {
+                Toast.makeText(getApplicationContext(), "Parece que no se encontro el archivo de datos de alimentos.", Toast.LENGTH_LONG).show();
+            }
+
 
         alimentosObjetoses=new ArrayList<AlimentosObjetos>();
 

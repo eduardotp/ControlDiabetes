@@ -33,7 +33,7 @@ public class Splash extends Activity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 finish();
-                Intent intent=new Intent(getBaseContext(),RegistroAlimentosYControlActivity.class);
+                Intent intent=new Intent(getBaseContext(),MainActivity.class);
               //  Intent intent=new Intent(getBaseContext(),TendenciaHistoricaActivity.class);
 
                 startActivity(intent);

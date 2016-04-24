@@ -1,3 +1,39 @@
 <resources>
     <string name="app_name">Control de Diabetes</string>
+
+	<string name="titulo">Registro Diario de Información</string>
+        <string name="titulo1">Parámetros en ayunas</string>
+        <string name="titulo2">Parámetros del sueño</string>
+        <string name="titulo3">Síntomas adicionales</string>
+        <string name="glucosa">Glucosa en ayunas</string>
+        <string name="peso">Peso en ayunas</string>
+        <string name="horassueno">Horas de sueño</string>
+        <string name="inicio">Inicio del sueño</string>
+        <string name="calidad">Calidad del sueño</string>
+        <string name="pregunta">¿Existe alguna molestia física?</string>
+        <string name="fiebre">Fiebre</string>
+        <string name="resfrio">Resfrío</string>
+        <string name="diarrea">Diarrea</string>
+        <string name="inflamacion">Enrojecimiento</string>
+        <string name="btnaceptar">Aceptar</string>
+        <string name="toogle">SI</string>
+
+        <string-array name="spinner1">
+            <item>Muy bueno</item>
+            <item>Bueno</item>
+            <item>Regular</item>
+            <item>Malo</item>
+            <item>Muy malo</item>
+        </string-array>
+
+        <string-array name="spinner2">
+            <item>8:00 p.m.</item>
+            <item>9:00 p.m.</item>
+            <item>10:00 p.m.</item>
+            <item>11:00 p.m.</item>
+            <item>12:00 p.m.</item>
+            <item>1:00 a.m.</item>
+            <item>2:00 a.m.</item>
+        </string-array>
+
 </resources>
