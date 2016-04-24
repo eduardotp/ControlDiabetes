@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:shrinkColumns="*"
+    android:stretchColumns="*"
+    android:background="#ffffff">
+
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Selecciona una opción"
+            android:textAlignment="center"
+            android:layout_span="3"
+            android:padding="18dip"
+            android:background="#F5F5F5"
+            android:textColor="#000"/>
+    </TableRow>
+
+    <!-- Row 2 with 2 columns -->
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/datospaciente"
+            android:text="Datos personales"
+            android:layout_weight="1"
+            android:textSize="15dp"
+            android:background="#F5F5F5"
+            android:textColor="#000000"
+            android:onClick="datosper"
+            android:padding="18dip"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/registroayunas"
+            android:text="Registro en ayunas"
+            android:layout_weight="1"
+            android:textSize="15dp"
+            android:background="#F5F5F5"
+            android:textColor="#000000"
+            android:padding="18dip"
+            android:onClick="ayunas"
+            android:gravity="center"/>
+    </TableRow>
+
+    <!-- Row 3 with 2 columns -->
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/comidas"
+            android:text="Registro de comidas"
+            android:layout_weight="1"
+            android:textSize="15dp"
+            android:background="#F5F5F5"
+            android:textColor="#000000"
+            android:padding="18dip"
+            android:onClick="comidas"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/registrodiario"
+            android:text="Registro diario"
+            android:layout_weight="1"
+            android:textSize="15dp"
+            android:background="#F5F5F5"
+            android:textColor="#000000"
+            android:onClick="diario"
+            android:padding="18dip"
+            android:gravity="center"/>
+    </TableRow>
+
+</TableLayout>
